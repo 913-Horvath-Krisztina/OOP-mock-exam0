@@ -26,6 +26,7 @@ of the issue’s solver is automatically updated to the name of the programmer w
 8. When a modification is made by any user, all the other users will see the modified list of issues. 
 (2p)
 9. When the application is finished, the issues file will be updated. (0.5p)
+
 Observations
 1. 1p - of
 2. Specify and test the following functions (repository / service):
