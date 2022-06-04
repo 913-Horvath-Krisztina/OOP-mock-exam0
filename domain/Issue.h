@@ -24,6 +24,7 @@ public:
 
     void set_status(std::string s)  { status = std::move(s);}
     void set_solver(std::string sol)  { solver = std::move(sol);}
+    std::string get_reporter() { return reporter;}
 };
 
 

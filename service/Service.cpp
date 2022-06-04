@@ -90,11 +90,15 @@ void Service::remove_issue(std::string desc) {
 }
 
 void Service::resolve_issue(std::string desc, std::string solver) {
-    for(auto i:get_issues_serv())
+    int index = 0;
+    for(auto i:get_issues_serv()){
         if(i.get_description() == desc){
-            i.set_solver(solver);
-            i.set_status("closed");
+            Issue is(desc, "closed", i.get_reporter(), solver);
+            issues[index] = is;
             notify();
             break;
         }
+        index++;
+    }
+
 }

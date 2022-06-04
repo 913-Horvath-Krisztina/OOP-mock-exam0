@@ -71,9 +71,9 @@ void GUI::resolve_issue() {
 
     std::string desc, status, reporter, solver;
 
-    getline(x, desc, ' ');
-    getline(x, status, ' ');
-    getline(x, reporter, ' ');
+    getline(x, desc, ';');
+    getline(x, status, ';');
+    getline(x, reporter, ';');
     getline(x, solver, '\n');
 
     std::string name, type;
@@ -81,7 +81,9 @@ void GUI::resolve_issue() {
     getline(y, name, ' ');
     getline(y, type, '\n');
 
-    if(name == "programmer"){
+
+
+    if(type == "programmer"){
         if(status == "open"){
             serv.resolve_issue(desc, name);
             update();
