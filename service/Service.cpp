@@ -9,9 +9,9 @@ Service::~Service() {
 
 }
 
-void Service::add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver) {
+int Service::add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver) {
     Issue i(desc, status, reporter, solver);
-    this->repo.add_issue(i);
+    return this->repo.add_issue(i);
 }
 
 std::vector<Issue> Service::get_sorted_issues() {
@@ -25,3 +25,7 @@ std::vector<Issue> Service::get_sorted_issues() {
     return sorted;
 
 }
+
+//void Service::record_observer(GUI * g) {
+////    repo.addObserver(g);
+//}

@@ -4,6 +4,7 @@
 
 #include "Repository.h"
 #include <fstream>
+#include <algorithm>
 
 Repository::Repository() {
 
@@ -48,7 +49,17 @@ void Repository::write_file_issues() {
 
 }
 
-void Repository::add_issue(Issue i) {
+int Repository::add_issue(Issue i) {
+    std::vector<Issue> is;
+    for(auto k: issues)
+        if(k.get_description() == i.get_description())
+            is.push_back(k);
+
+    if(i.get_description().empty() || !is.empty())
+        return 0;
+
     issues.push_back(i);
     notify(); /// observer notify
+
+    return 1;
 }

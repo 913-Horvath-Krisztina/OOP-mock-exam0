@@ -19,6 +19,6 @@ public:
     std::vector<Issue> get_issues(){return issues; }
     std::vector<User> get_users() {return  users;}
 
-    void add_issue(Issue i);
+    int add_issue(Issue i);
 
 };

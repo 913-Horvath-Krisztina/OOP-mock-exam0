@@ -1,5 +1,6 @@
 #pragma once
 #include "Repository.h"
+//#include "gui.h"
 
 class Service{
 private:
@@ -10,7 +11,9 @@ public:
     ~Service();
 
     std::vector<Issue> get_issues_serv() { return repo.get_issues(); }
-    void add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver);
+    int add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver);
 
     std::vector<Issue> get_sorted_issues();
+
+//    void record_observer(GUI* g);
 };

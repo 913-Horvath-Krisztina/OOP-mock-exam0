@@ -18,6 +18,8 @@ public:
     ~GUI();
     void populate_list();
     void update() override;
+    void connect_signals_slots();
+    void add_issue();
 
 private:
     Ui::GUI *ui;
