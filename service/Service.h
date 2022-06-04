@@ -11,4 +11,6 @@ public:
 
     std::vector<Issue> get_issues_serv() { return repo.get_issues(); }
     void add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver);
+
+    std::vector<Issue> get_sorted_issues();
 };

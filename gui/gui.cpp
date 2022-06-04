@@ -17,7 +17,7 @@ GUI::~GUI()
 
 void GUI::populate_list() {
     ui->listWidget->clear();
-    std::vector<Issue> issues = serv.get_issues_serv();
+    std::vector<Issue> issues = serv.get_sorted_issues();
     for(auto i:issues){
         QListWidgetItem* item = new QListWidgetItem(i.to_string().c_str());
         ui->listWidget->addItem(item);

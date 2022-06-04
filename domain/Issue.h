@@ -19,6 +19,9 @@ public:
     friend std::istream& operator>>(std::istream& is, Issue& i);
     friend std::ostream& operator<<(std::ostream& is, Issue& i);
 
+    std::string get_status(){ return status;}
+    std::string get_description() { return description;}
+
 };
 
 
