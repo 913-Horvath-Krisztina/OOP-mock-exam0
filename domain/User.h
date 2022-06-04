@@ -19,6 +19,9 @@ public:
     friend std::ostream& operator<<(std::ostream& is, User& i);
     std::string to_string();
 
+    std::string get_name() { return name;}
+    std::string get_type() { return type;}
+
 
 };
 

@@ -8,9 +8,20 @@ int main(int argc, char *argv[]) {
     Repository repo;
     Service serv = Service(repo);
 
-    GUI gui{serv};
-    gui.show();
-    gui.resize(600, 400);
+    std::vector<GUI*> guis;
 
-    return QApplication::exec();
+    for(auto u:repo.get_users()){
+        GUI* g = new GUI{serv};
+        guis.push_back(g);
+        std::string title = u.get_name() + " " + u.get_type();
+        g->setWindowTitle(title.c_str());
+
+        g->show();
+        g->resize(600, 400);
+    }
+
+    QApplication::exec();
+
+    for(auto g: guis)
+        delete g;
 }
