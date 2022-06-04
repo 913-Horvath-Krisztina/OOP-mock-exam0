@@ -76,3 +76,15 @@ void Service::write_file_issues() {
 Service::Service() {
 
 }
+
+void Service::remove_issue(std::string desc) {
+    int pos = 0;
+    for(auto i:issues){
+        if(i.get_description() == desc && i.get_status() == "closed"){
+            issues.erase(issues.begin() + pos);
+            notify();
+            break;
+        }
+        pos++;
+    }
+}

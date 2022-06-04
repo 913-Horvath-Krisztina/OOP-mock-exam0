@@ -37,6 +37,6 @@ std::string Issue::to_string() {
 }
 
 std::ostream &operator<<(std::ostream &is, Issue &i) {
-    is << i.description << ";" << i.status << ";" << i.reporter << ";" << i.solver <<"\n";
+    is << i.description << ";" << i.status << ";" << i.reporter << ";" << i.solver;
     return is;
 }

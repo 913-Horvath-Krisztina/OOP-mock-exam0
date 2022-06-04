@@ -9,22 +9,21 @@ int main(int argc, char *argv[]) {
     serv.read_file_issues();
     serv.read_from_users();
 
-//    std::vector<GUI*> guis;
-
+    std::vector<GUI*> guis;
 
     for(auto u:serv.get_users()){
-
-//        guis.push_back(g);
         GUI* g = new GUI{serv};
-        std::string title = u.get_name() + " " + u.get_type();
+        guis.push_back(g);
+        std::string title = u.get_name() + ' ' + u.get_type();
         g->setWindowTitle(title.c_str());
 
         g->show();
         g->resize(600, 400);
     }
 
-    return QApplication::exec();
+    QApplication::exec();
+    serv.write_file_issues();
 
-//    for(auto g: guis)
-//        delete g;
+    for(auto g: guis)
+        delete g;
 }

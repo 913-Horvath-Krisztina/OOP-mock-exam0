@@ -20,6 +20,7 @@ public:
     void update() override;
     void connect_signals_slots();
     void add_issue();
+    void remove_issue();
 
 private:
     Ui::GUI *ui;

@@ -21,4 +21,6 @@ public:
     void read_file_issues();
     void write_file_issues();
 
+    void remove_issue(std::string desc);
+
 };
