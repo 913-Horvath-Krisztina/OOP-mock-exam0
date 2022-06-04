@@ -88,3 +88,13 @@ void Service::remove_issue(std::string desc) {
         pos++;
     }
 }
+
+void Service::resolve_issue(std::string desc, std::string solver) {
+    for(auto i:get_issues_serv())
+        if(i.get_description() == desc){
+            i.set_solver(solver);
+            i.set_status("closed");
+            notify();
+            break;
+        }
+}

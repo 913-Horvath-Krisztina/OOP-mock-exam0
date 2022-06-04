@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>GUI</class>
  <widget class="QWidget" name="GUI">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -47,6 +50,22 @@
    </property>
    <property name="text">
     <string>remove</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="resolve_pushButton">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>230</y>
+     <width>80</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>resolve</string>
    </property>
   </widget>
   <widget class="QWidget" name="">

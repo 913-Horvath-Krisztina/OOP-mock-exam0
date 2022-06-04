@@ -23,4 +23,6 @@ public:
 
     void remove_issue(std::string desc);
 
+    void resolve_issue(std::string desc, std::string solver);
+
 };

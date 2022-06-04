@@ -21,6 +21,8 @@ public:
     void connect_signals_slots();
     void add_issue();
     void remove_issue();
+    void resolve_issue();
+
 
 private:
     Ui::GUI *ui;

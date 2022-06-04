@@ -22,6 +22,8 @@ public:
     std::string get_status(){ return status;}
     std::string get_description() { return description;}
 
+    void set_status(std::string s)  { status = std::move(s);}
+    void set_solver(std::string sol)  { solver = std::move(sol);}
 };
 
 
