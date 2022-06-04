@@ -5,14 +5,17 @@
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
-    Repository repo;
-    Service serv = Service(repo);
+    Service serv = Service();
+    serv.read_file_issues();
+    serv.read_from_users();
 
-    std::vector<GUI*> guis;
+//    std::vector<GUI*> guis;
 
-    for(auto u:repo.get_users()){
+
+    for(auto u:serv.get_users()){
+
+//        guis.push_back(g);
         GUI* g = new GUI{serv};
-        guis.push_back(g);
         std::string title = u.get_name() + " " + u.get_type();
         g->setWindowTitle(title.c_str());
 
@@ -20,8 +23,8 @@ int main(int argc, char *argv[]) {
         g->resize(600, 400);
     }
 
-    QApplication::exec();
+    return QApplication::exec();
 
-    for(auto g: guis)
-        delete g;
+//    for(auto g: guis)
+//        delete g;
 }

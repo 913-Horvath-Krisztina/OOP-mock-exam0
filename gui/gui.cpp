@@ -7,6 +7,7 @@ GUI::GUI(Service& s, QWidget *parent) :
     ui(new Ui::GUI)
 {
     ui->setupUi(this);
+    serv.addObserver(this);
     connect_signals_slots();
     populate_list();
 

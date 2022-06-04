@@ -1,19 +1,24 @@
 #pragma once
-#include "Repository.h"
-//#include "gui.h"
+#include "Observer.h"
+#include "User.h"
+#include "Issue.h"
 
-class Service{
+class Service: public Subject{
 private:
-    Repository& repo;
+    std::vector<User> users;
+    std::vector<Issue> issues;
 
 public:
-    Service(Repository& r): repo(r) {repo.read_file_issues(); repo.read_file_users();}
+    Service();
     ~Service();
 
-    std::vector<Issue> get_issues_serv() { return repo.get_issues(); }
+    std::vector<Issue> get_issues_serv() { return issues; }
+    std::vector<User> get_users() {return users;}
     int add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver);
 
     std::vector<Issue> get_sorted_issues();
+    void read_from_users();
+    void read_file_issues();
+    void write_file_issues();
 
-//    void record_observer(GUI* g);
 };

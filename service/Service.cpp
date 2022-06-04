@@ -4,6 +4,7 @@
 
 #include "Service.h"
 #include <algorithm>
+#include <fstream>
 
 Service::~Service() {
 
@@ -11,11 +12,24 @@ Service::~Service() {
 
 int Service::add_issue_serv(std::string desc, std::string status, std::string reporter, std::string solver) {
     Issue i(desc, status, reporter, solver);
-    return this->repo.add_issue(i);
+    std::vector<Issue> is;
+    for(auto k: issues)
+        if(k.get_description() == i.get_description())
+            is.push_back(k);
+
+    if(i.get_description().empty() || !is.empty())
+        return 0;
+
+    issues.push_back(i);
+    notify(); /// observer notify
+
+    return 1;
+
+
 }
 
 std::vector<Issue> Service::get_sorted_issues() {
-    std::vector<Issue> sorted = repo.get_issues();
+    std::vector<Issue> sorted = issues;
 
     std::sort(sorted.begin(), sorted.end(), [](Issue i1, Issue i2){return i1.get_status() > i2.get_status();});
 
@@ -26,6 +40,39 @@ std::vector<Issue> Service::get_sorted_issues() {
 
 }
 
-//void Service::record_observer(GUI * g) {
-////    repo.addObserver(g);
-//}
+void Service::read_from_users() {
+    std::string file = R"(C:\Facultate\OOP\tests\OOP-mock-exam0\repo\users.txt)";
+    std::ifstream f(file);
+
+    User u{};
+    while(f >> u){
+        users.push_back(u);
+    }
+    f.close();
+}
+
+void Service::read_file_issues() {
+    std::string file = R"(C:\Facultate\OOP\tests\OOP-mock-exam0\repo\issues.txt)";
+    std::ifstream f(file);
+
+    Issue i{};
+    while(f >> i)
+        issues.push_back(i);
+    f.close();
+}
+
+void Service::write_file_issues() {
+    std::string file = R"(C:\Facultate\OOP\tests\OOP-mock-exam0\repo\issues.txt)";
+    std::ofstream f(file, std::ios::trunc);
+    if(!f.is_open()){
+        std::string error = "\n\tError! Couldn't open watchlist CSV file!\n";
+        return;
+    }
+    for(auto m: issues)
+        f << m << "\n";
+    f.close();
+}
+
+Service::Service() {
+
+}
